@@ -1,0 +1,13 @@
+<template>
+  <template for:each={listOfProducts} for:item="product">
+
+    <div key={product.Id} class="slds-col slds-size_1-of-2">
+      <lightning-card >
+        <p slot="title" class="slds-p-horizontal_small">{product.Name}</p>
+        <img src={product.Image_URL__c} alt="Girl in a jacket" width="500" height="600">
+        <p class="slds-p-horizontal_small">$ {product.Price__c}</p>
+
+      </lightning-card>
+    </div>
+  </template>
+</template>
