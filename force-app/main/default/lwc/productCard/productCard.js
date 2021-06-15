@@ -10,6 +10,8 @@ export default class ProductCard extends LightningElement {
         console.log(result);
         this.listOfProducts = result;
         this.error = undefined;
+        const isAddedToCart = false
+        const quantity = 1
       })
 
       .catch((error) => {
@@ -18,5 +20,6 @@ export default class ProductCard extends LightningElement {
       });
 
   }
+
 
 }

@@ -4,10 +4,25 @@
     <div key={product.Id} class="slds-col slds-size_1-of-2">
       <lightning-card >
         <p slot="title" class="slds-p-horizontal_small">{product.Name}</p>
-        <img src={product.Image_URL__c} alt="Girl in a jacket" width="500" height="600">
+        <img src={product.Image_URL__c} alt={product.Name} width="500" height="600">
         <p class="slds-p-horizontal_small">$ {product.Price__c}</p>
-
+        <lightning-layout>
+        <lightning-layout-item size="3" class="slds-var-p-right_xx-small">
+          <lightning-input step="1" variant="label-hidden" type="number" value={quantity} label="Quantity"
+              onchange={handleChange}>
+          </lightning-input>
+      </lightning-layout-item>
+        <lightning-layout-item size="6" class="slds-var-p-left_xx-small">
+          <lightning-button if:false={isAddedToCart} variant="success" label="Add to cart" title="Add to cart"
+              onclick={handleAddToCart}>
+          </lightning-button>
+          <lightning-button if:true={isAddedToCart} variant="destructive" label="Remove" title="Remove"
+              onclick={handleRemoveFromCart}>
+          </lightning-button>
+      </lightning-layout-item>
+    </lightning-layout>
       </lightning-card>
+   
     </div>
   </template>
 </template>
