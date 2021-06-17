@@ -1,5 +1,6 @@
 import { LightningElement, track } from 'lwc';
 import getProducts from '@salesforce/apex/ProductService.getProducts';
+import addToCart from '@salesforce/apex/ProductService.addToCart';
 
 
 export default class ProductCard extends LightningElement {
@@ -19,6 +20,11 @@ export default class ProductCard extends LightningElement {
         this.listOfProducts = undefined;
       });
 
+  }
+
+  handleAddToCart(){
+    console.log("hello")
+    
   }
 
 

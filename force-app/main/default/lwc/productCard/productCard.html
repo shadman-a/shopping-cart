@@ -1,7 +1,7 @@
 <template>
   <template for:each={listOfProducts} for:item="product">
 
-    <div key={product.Id} class="slds-col slds-size_1-of-2">
+    <div key={product.Id} style="display: flex; flex-wrap: wrap;">
       <lightning-card >
         <p slot="title" class="slds-p-horizontal_small">{product.Name}</p>
         <img src={product.Image_URL__c} alt={product.Name} width="500" height="600">
