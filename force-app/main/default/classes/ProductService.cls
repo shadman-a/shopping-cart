@@ -12,10 +12,32 @@ public with sharing class ProductService {
     }
 
     @AuraEnabled
-    public static String addToCart(Id product, Id currentUser){
+    public static Id createCart(Id currentUser){
         try{
-            System.debug('Current User : '+currentUser);
-            System.debug('Current User : '+product);
+            String query = 'SELECT Id FROM Cart__c WHERE (User__c = ' + '\''  + currentUser + '\''+ ')';
+            if (Database.query(query).isEmpty()){
+                Cart__c newCart = new Cart__c();      
+                newCart.User__c = currentUser;
+                insert newCart; 
+                return newCart.Id;
+            } else {
+                return Database.query(query).Id;
+            }
+            
+        }
+        catch(Exception e){
+            throw e;
+        }
+        
+    }
+
+    @AuraEnabled
+    public static String addToCart(Id product, Id currentUser, Id cartId){
+        try{
+            Cart_Product__c newCartProduct = new Cart_Product__c();  
+            newCartProduct.Cart__c = cartId;
+            newCartProduct.Store_Product__c = product;
+            insert newCartProduct;
             return 'Success';
         }
         catch(Exception e){
