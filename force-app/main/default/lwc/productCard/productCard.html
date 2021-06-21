@@ -14,7 +14,7 @@
       </lightning-layout-item>
         <lightning-layout-item size="6" class="slds-var-p-left_xx-small">
           <lightning-button if:false={isAddedToCart} variant="success" label="Add to cart" title="Add to cart"
-              onclick={handleAddToCart}>
+              onclick={handleAddToCart} data-id={product.Id}>
           </lightning-button>
           <lightning-button if:true={isAddedToCart} variant="destructive" label="Remove" title="Remove"
               onclick={handleRemoveFromCart}>
