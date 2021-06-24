@@ -1,0 +1,28 @@
+<template>
+  <div class="slds-var-m-bottom_small">
+    <lightning-input type="text" value={searchValue} label="Search Zip" placeholder="search here..."
+      onchange={searchKeyword}></lightning-input>
+  </div>
+  <lightning-button variant="success" label="Search" title="Successful action" onclick={handleSearchZip}
+    class="slds-var-m-left_x-small"></lightning-button>
+    <br/>
+    <br/>
+
+    <template if:true={show}>
+     <lightning-card 
+     icon-name="standard:address"
+     >
+        <p slot="title" class="slds-p-horizontal_small">{hood}</p>
+        <p class="slds-p-horizontal_small">State: {state}</p>    
+        <p class="slds-p-horizontal_small">Zip Code: {code}</p>
+        <br/>    
+        <lightning-map
+          map-markers={mapMarkers}
+          zoom-level=13
+          >
+        </lightning-map>
+   
+      </lightning-card>
+    </template>
+  
+</template>

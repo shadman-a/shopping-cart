@@ -46,5 +46,19 @@ public with sharing class ProductService {
         
     }
 
+    @AuraEnabled
+    public static Map<String,Object> makeGetCallout(String searchValue) {
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint('https://api.zippopotam.us/us/' + searchValue);
+        request.setMethod('GET');
+        HttpResponse response = http.send(request);
+        Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+     
+        return results;
+    }
     
-}
+    }
+
+    
+

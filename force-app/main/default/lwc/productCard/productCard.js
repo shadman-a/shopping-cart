@@ -32,9 +32,6 @@ export default class ProductCard extends LightningElement {
       .catch((error) => {
         this.error = error;
       });
-
-    
-
     
   }
 
